@@ -1,4 +1,4 @@
-from langchain_groq import ChatGroq
+fffrom langchain_groq import ChatGroq
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 import os
@@ -54,7 +54,7 @@ def setup_llm_chain():
         raise ValueError("GROQ_API_KEY is missing. Please check .env file.")
 
     llm = ChatGroq(
-        model_name="llama3-8b-8192",
+        model_name="llama3-70b-8192f",
         api_key=api_key
     )
 
