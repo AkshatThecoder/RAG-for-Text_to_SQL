@@ -10,7 +10,7 @@ from langchain.prompts import PromptTemplate
 from db_schema_logic import extract_schema
 
 # Set Groq API Key
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("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")
 if not GROQ_API_KEY:
     st.error("❌ Groq API Key not found! Set it as an environment variable.")
     st.stop()
