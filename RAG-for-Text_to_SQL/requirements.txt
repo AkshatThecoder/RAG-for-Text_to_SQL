@@ -1,5 +1,5 @@
 streamlit
 langchain
 langchain-groq
-perplexity-ai
+langchain-perplexity
 pandas
