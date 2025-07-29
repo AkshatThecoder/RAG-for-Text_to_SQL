@@ -39,7 +39,7 @@ if uploaded_file:
     if st.button("Generate SQL Query"):
         if question:
             # Load LLM for Text-to-SQL
-            llm = ChatPerplexity(model="sonar-medium-32k-online", api_key=PERPLEXITY_API_KEY)
+            llm = ChatPerplexity(model="sonar", api_key=PERPLEXITY_API_KEY)
             prompt = PromptTemplate(
                 input_variables=["schema", "question"],
                 template="Given the database schema:\n{schema}\n\nConvert this natural language question into an SQL query:\n{question}",
