@@ -1,18 +1,18 @@
-# Description: Streamlit app for Text-to-SQL using Groq API and SQLite database.
+# Description: Streamlit app for Text-to-SQL using Perplexity API and SQLite database.
 
 import streamlit as st
 import sqlite3
 import os
 import re
 from langchain.chains import LLMChain
-from langchain_groq import ChatGroq  # ✅ FIXED IMPORT
+from langchain_community.chat_models import ChatPerplexity
 from langchain.prompts import PromptTemplate
 from db_schema_logic import extract_schema
 
-# Set Groq API Key
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-if not GROQ_API_KEY:
-    st.error("❌ Groq API Key not found! Set it as an environment variable.")
+# Set Perplexity API Key
+PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY")
+if not PERPLEXITY_API_KEY:
+    st.error("❌ Perplexity API Key not found! Set it as an environment variable.")
     st.stop()
 
 # Streamlit UI
@@ -39,7 +39,7 @@ if uploaded_file:
     if st.button("Generate SQL Query"):
         if question:
             # Load LLM for Text-to-SQL
-            llm = ChatGroq(model="mixtral-8x7b-32768", api_key=GROQ_API_KEY)
+            llm = ChatPerplexity(model="pplx-7b-online", api_key=PERPLEXITY_API_KEY)
             prompt = PromptTemplate(
                 input_variables=["schema", "question"],
                 template="Given the database schema:\n{schema}\n\nConvert this natural language question into an SQL query:\n{question}",
